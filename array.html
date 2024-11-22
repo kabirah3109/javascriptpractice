@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="item" id="item">
+    <button onclick="addItem()">add</button>
+    <div id="showCart">items added will be shown here.....</div>
+    <button onclick="deleteLast()">Delete last</button>
+    <button onclick="deleteFirst()">Delete first</button>
+    <button onclick="addFirst()"> add first</button>
+    <script>
+        // console.log(showCart.innerHTML);
+        var cart = []
+        function addItem(){
+        if (item.value == "") {
+            alert ("fill in the inpur")
+        } else {
+            cart.unshift(item.value)
+            // cart.push(item.value)
+            // console.log(item.value);
+            console.log(cart);
+            document.getElementById ("item").value = ""
+        //     document.getElementById ("showCart") . innerHTML =""
+        //     //  document.getElementById ("showCart").innerHTML = cart
+        // for (i = 0; i < cart.length; i++){
+        //     // console.log(cart[i]);
+        //     document.getElementById ("showCart") . innerHTML  += `
+        //     <p>${i+1}. ${cart[i]}</p>
+        //     `
+        // }
+        displayCart()
+        }
+        }
+        function deleteLast() {
+            if (cart.length <= 0){
+                alert("you need to add an item")
+            } else{
+                var confirmation = confirm("are you sure you want to delete?this action is irreversible")
+                console.log(confirmation);
+                if (confirmation == true)
+                cart.pop()
+        //         document.getElementById ("showCart") . innerHTML =""
+        //     //  document.getElementById ("showCart").innerHTML = cart
+        // for (i = 0; i < cart.length; i++){
+        //     // console.log(cart[i]);
+        //     document.getElementById ("showCart") . innerHTML  += `
+        //     <p>${i+1}. ${cart[i]}</p>
+        //     `
+        // }
+        displayCart()
+            console.log(cart);
+            }
+        }
+
+
+       function deleteFirst(){
+        if (cart.length <= 0){
+                alert("you need to add an item")
+            } else{
+                var confirmation = confirm("are you sure you want to delete?this action is irreversible")
+                console.log(confirmation);
+                if (confirmation == true)
+                cart.shift()
+        displayCart()
+            console.log(cart);
+            }
+        }
+
+        function addFirst(){
+        if (cart.length <= 0){
+                alert("you need to add an item")
+            } else{
+                var confirmation = confirm("are you sure you want to add?this action is irreversible")
+                console.log(confirmation);
+                if (confirmation == true)
+                cart.unshift()
+        displayCart()
+            console.log(cart);
+            }
+        }
+
+
+
+        function displayCart(){
+            document.getElementById ("showCart") . innerHTML =""
+        for (i = 0; i < cart.length; i++){
+            document.getElementById ("showCart") . innerHTML  += `
+            <p>${i+1}. ${cart[i]}</p>
+            `
+            
+        }
+        }
+        // array is a square bracket
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <input id="firstName" type="text" name="firstName" placeholder="Enter your first name"><br>
+    <input id="lastName" type="text" name="lastName" placeholder="Enter your last name"><br>
+    <input id="email" type="email" name="email" placeholder="Enter your email"><br>
+    <input id="password" type="password" name="password"  placeholder="Enter your password"><br>
+    <button id="btnSubmit">submit</button>
+<script>
+    let  allStudents = []
+    const btn = document.getElementById('btnSubmit')
+    const fName = document.getElementById('firstName')
+    const lName = document.getElementById('lastName')
+    const mail = document.getElementById('email')
+    const pass = document.getElementById('password')
+    
+    btn.addEventListener('click' , () =>{
+        
+        if( fName.value =='' || lName.value == '' || mail.value ==''|| pass.value =='' ){
+            alert('fill in the empty space')
+            
+        } else{
+        // console.log(fName.value,lName.value,mail.value,pass.value);
+            const obj = {
+                first: fName.value,
+                last: lName.value,
+                mail: mail.value,
+                pass: pass.value
+            }
+            console.log(obj);
+            allStudents.push(obj);
+            localStorage.setItem('students',JSON.stringify(allStudents))
+            setTimeout(()=>{
+                window.location.href = 'signin.html'
+            },1000)
+            console.log (allStudents);
+            fName.value=''
+            lName.value=''
+            mail.value=''
+            pass.value=''
+    }               
+    })
+
+</script>
+</body>
+</html>

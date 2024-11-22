@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Sign In</h1>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+    /><br />
+    <input
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Enter your password"
+    /><br />
+    <button id="btnSubmit">submit</button>
+    <script>
+      const btn = document.getElementById("btnSubmit");
+      const mailInput = document.getElementById("email");
+      const passInput = document.getElementById("password");
+      btn.addEventListener("click", () => {
+        if (
+          mailInput.value == "" ||
+          passInput.value == ""
+        ) {
+          alert("fill in the empty space");
+        } else {
+          let gottenStudents;
+          let ls = JSON.parse(localStorage.getItem("students"));
+          gottenStudents = ls;
+          console.log(gottenStudents);
+          gottenStudents.find(
+            (student) =>
+              student.mail == mailInput.value && student.pin == passInput.value
+          );
+          localStorage.setItem('currentStudent',JSON.stringify(gottenStudents[0]))
+          setTimeout(()=>{
+                window.location.href = 'dashboard.html'
+            },1000)
+          
+        }
+      });
+    </script>
+  </body>
+</html>

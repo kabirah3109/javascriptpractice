@@ -1,19 +1,41 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <button onclick="getInfo()">get info</button>
+  </head>
+  <body>
+    <button onclick="getInfo()">Get information</button>
+    <button onclick="getInfo2()">Get information 2</button>
+    <div id="showcase"></div>
     <script>
-        const apiLink = 'https//jsonlaceholder.typicode.com/users'
-        const getInfo = async() => {
-            const response = await fetch(apiLink)
-        const newResponse = await response.json()
-        console.log(newResponse);
+      const endpoint = "https://jsonplaceholder.typicode.com/users";
+      const endpoint2 = "https://api.github.com/users";
 
-        }
+      const getInfo = async () => {
+        const response = await fetch(endpoint);
+        // console.log(response);
+        //     const response = await fetch(apiLink)
+        const newResponse = await response.json();
+        console.log(newResponse);
+        newResponse.map((data) => {
+          showcase.innerHTML += `
+            <p> ${data.id}. ${data.name}</p>
+            `;
+        });
+      };
+      const getInfo2 = () => {
+        fetch(endpoint2)
+        .then((response) => {
+            return response.json()
+        })
+    .then((newResponse) =>{
+console.log(newResponse)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+      }
     </script>
-</body>
+  </body>
 </html>
